@@ -31,15 +31,19 @@ except Exception as e:
 # We use the Llama 3.1 8B model available on NVIDIA NIM as it is supported for your API key tier
 NVIDIA_MODEL = "meta/llama-3.1-8b-instruct"
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+
 # We must ensure the static directory exists before mounting
-os.makedirs("static", exist_ok=True)
+os.makedirs(STATIC_DIR, exist_ok=True)
 
 # Mount static files to serve HTML, CSS, JS
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_index():
-    with open("static/index.html", "r") as f:
+    index_path = os.path.join(STATIC_DIR, "index.html")
+    with open(index_path, "r") as f:
         return f.read()
 
 @app.post("/analyze")
