@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Log Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for premium icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="ph ph-terminal-window"></i>
+                <h1>Nexus AI <span>Incident Analysis</span></h1>
+            </div>
+            <p class="subtitle">Powered by NVIDIA AI (Llama 3.1)</p>
+        </header>
+
+        <section class="upload-section" id="upload-zone">
+            <div class="upload-content">
+                <i class="ph ph-upload-simple upload-icon"></i>
+                <h2>Upload Server Logs</h2>
+                <p>Drag and drop your .log file here, or click to browse.</p>
+                <input type="file" id="file-input" accept=".log,.txt" hidden>
+                <button class="btn-upload" onclick="document.getElementById('file-input').click()">Browse Files</button>
+            </div>
+            <div class="loading-state hidden" id="loading-state">
+                <div class="spinner"></div>
+                <p>Analyzing anomalies with Llama 3.1...</p>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="results-section">
+            <div class="metrics-dashboard" id="metrics-dashboard">
+                <div class="metric-card error-metric">
+                    <div class="metric-title"><i class="ph ph-warning-octagon"></i> Errors</div>
+                    <div class="metric-value" id="metric-errors">0</div>
+                </div>
+                <div class="metric-card warning-metric">
+                    <div class="metric-title"><i class="ph ph-warning"></i> Warnings</div>
+                    <div class="metric-value" id="metric-warnings">0</div>
+                </div>
+                <div class="metric-card service-metric">
+                    <div class="metric-title"><i class="ph ph-hard-drives"></i> Failed Services</div>
+                    <div class="metric-value" id="metric-services">0</div>
+                </div>
+            </div>
+
+            <div class="summary-card glass-card">
+                <h3><i class="ph ph-info"></i> Incident Overview</h3>
+                <p id="summary-text">Loading overview...</p>
+            </div>
+
+            <div class="recommendations-card glass-card hidden" id="recommendations-container">
+                <h3><i class="ph ph-lightbulb"></i> Smart Recommendations</h3>
+                <ul id="recommendations-list" class="recommendations-list">
+                    <!-- Recommendations will be injected here -->
+                </ul>
+            </div>
+
+            <div class="errors-container" id="errors-container">
+                <!-- Errors will be injected here -->
+            </div>
+            
+            <button class="btn-secondary" id="btn-reset">Analyze Another Log</button>
+        </section>
+    </main>
+
+    <script src="/static/app.js?v=3"></script>
+</body>
+</html>

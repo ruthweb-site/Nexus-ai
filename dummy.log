@@ -1,0 +1,11 @@
+2026-05-14 10:00:01 INFO [SystemInit] Starting up Nexus-AI services...
+2026-05-14 10:00:02 INFO [DB] Connecting to main database...
+2026-05-14 10:00:03 INFO [DB] Connection successful.
+2026-05-14 10:05:12 WARN [MemoryMonitor] System memory usage exceeded 85%. Consider scaling.
+2026-05-14 10:12:45 ERROR [AuthService] Failed to authenticate user 'admin@nexus.local'. Token expired or invalid signature.
+2026-05-14 10:12:45 ERROR [AuthService] StackTrace:
+    at jwt.verify (token_validator.js:45)
+    at Object.authenticate (auth_controller.js:12)
+    at layer.handle [as handle_request] (express/router/layer.js:95:5)
+2026-05-14 10:15:00 INFO [CronJob] Nightly backup started.
+2026-05-14 10:30:00 ERROR [BackupService] Could not write to S3 bucket. AccessDenied: Access Denied.
